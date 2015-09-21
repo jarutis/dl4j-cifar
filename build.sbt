@@ -9,11 +9,11 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-mllib" % "1.4.1" % "provided",
   "org.apache.spark" %% "spark-sql" % "1.4.1" % "provided",
   "org.apache.spark" %% "spark-hive" % "1.4.1" % "provided",
-  "org.deeplearning4j" % "dl4j-spark-ml" % "0.4-rc3.1" excludeAll(
+  "org.deeplearning4j" % "dl4j-spark-ml" % "0.4-rc3.2" excludeAll(
     ExclusionRule(organization = "org.apache.spark"),
     ExclusionRule(organization = "org.apache.hadoop")
   ),
-  "org.nd4j" % "nd4j-x86" % "0.4-rc3.1"
+  "org.nd4j" % "nd4j-x86" % "0.4-rc3.2"
 )
 
 assemblyJarName in assembly := "cifar.jar"
