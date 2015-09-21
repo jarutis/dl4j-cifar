@@ -4,6 +4,11 @@ version := "0.0.1"
 
 scalaVersion := "2.10.4"
 
+resolvers ++= Seq(
+  "snapshots" at "https://oss.sonatype.org/content/repositories/snapshots",
+  "releases"  at "https://oss.sonatype.org/content/repositories/releases"
+)
+
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % "1.4.1" % "provided",
   "org.apache.spark" %% "spark-mllib" % "1.4.1" % "provided",
@@ -13,6 +18,7 @@ libraryDependencies ++= Seq(
     ExclusionRule(organization = "org.apache.spark"),
     ExclusionRule(organization = "org.apache.hadoop")
   ),
+  "com.twelvemonkeys.imageio" % "imageio-core" % "3.1.1",
   "org.nd4j" % "nd4j-x86" % "0.4-rc3.2"
 )
 
