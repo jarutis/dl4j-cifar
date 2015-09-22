@@ -23,13 +23,13 @@ object CifarClassificationLocal {
 
   val outputNum = 10
 
-  val batchSize = 1000
+  val batchSize = 500
   val numberOfSamples = 50000
   val iterations = 1
   val seed = 123
   val trainPercentage = 0.8
-  val trainImages = 39999
-  val testImages = 10001
+  val trainImages = 40000
+  val testImages = 10000
 
   val labeledPath = System.getProperty("user.home") + "/data/cifar"
   val testTrainSplitPath = System.getProperty("user.home") + "/data/cifarsplit"
@@ -119,7 +119,7 @@ object CifarClassificationLocal {
       trainedNetwork.fit(next)
       System.out.println("Evaluating so far")
       val evaluation = new Evaluation(outputNum)
-      val testIterNext = testingSet.sample(100,true)
+      val testIterNext = testingSet.sample(batchSize)
       evaluation.eval(testIterNext.getLabels(), trainedNetwork.output(testIterNext.getFeatureMatrix(), true))
       System.out.println(evaluation.stats())
       System.out.println("One batch done with score " + trainedNetwork.score())

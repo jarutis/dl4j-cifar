@@ -64,9 +64,11 @@ object CifarClassificationSpark {
         features = scaler.transform(row.getAs[Vector]("image_vector")))
     }
 
-    val Array(train, test) = normalised.randomSplit(Array(0.8, 0.2))
-
+//    val Array(train, test) = normalised.randomSplit(Array(0.6, 0.4))
+    val train = normalised
+    val test = normalised
     val trainLayer = new SparkDl4jMultiLayer(sc, conf.SceneConfiguration.getConfiguration)
+    System.out.println("train size: " + train.count())
     //fit on the training set
     val trainedNetwork = trainLayer.fit(train, 100)
     val trainedNetworkWrapper = new SparkDl4jMultiLayer(sc, trainedNetwork)
