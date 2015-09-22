@@ -18,6 +18,10 @@ libraryDependencies ++= Seq(
     ExclusionRule(organization = "org.apache.spark"),
     ExclusionRule(organization = "org.apache.hadoop")
   ),
+  "org.deeplearning4j" % "dl4j-spark" % "0.4-rc3.2" excludeAll(
+    ExclusionRule(organization = "org.apache.spark"),
+    ExclusionRule(organization = "org.apache.hadoop")
+  ),
   "com.twelvemonkeys.imageio" % "imageio-core" % "3.1.1",
   "org.nd4j" % "nd4j-x86" % "0.4-rc3.2"
 )

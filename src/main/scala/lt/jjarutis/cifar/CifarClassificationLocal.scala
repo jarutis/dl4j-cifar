@@ -28,6 +28,8 @@ object CifarClassificationLocal {
   val iterations = 1
   val seed = 123
   val trainPercentage = 0.8
+  val trainImages = 39999
+  val testImages = 10001
 
   val labeledPath = System.getProperty("user.home") + "/data/cifar"
   val testTrainSplitPath = System.getProperty("user.home") + "/data/cifarsplit"
@@ -71,7 +73,7 @@ object CifarClassificationLocal {
     System.out.println("Creating scaler!")
     val scaler = new StandardScaler()
     if(!meanFile.exists() || !stdFile.exists()) {
-      val scalerIterator = new RecordReaderDataSetIterator(trainReader, numberOfSamples, nIn, outputNum)
+      val scalerIterator = new RecordReaderDataSetIterator(trainReader, trainImages, nIn, outputNum)
       scaler.fit(scalerIterator.next())
       scaler.save(meanFile, stdFile)
     } else {
@@ -81,7 +83,7 @@ object CifarClassificationLocal {
     // read train dataset
     System.out.println("Reading train dataset!")
     if(!trainingFile.exists()) {
-      val readingIterator = new RecordReaderDataSetIterator(trainReader, numberOfSamples, nIn, outputNum)
+      val readingIterator = new RecordReaderDataSetIterator(trainReader, trainImages, nIn, outputNum)
       val trainingSet = readingIterator.next()
       trainingSet.save(trainingFile)
     }
@@ -91,7 +93,7 @@ object CifarClassificationLocal {
     // read test dataset
     System.out.println("Reading test dataset!")
     if(!testingFile.exists()) {
-      val testIterator = new RecordReaderDataSetIterator(trainReader, numberOfSamples, nIn, outputNum)
+      val testIterator = new RecordReaderDataSetIterator(trainReader, testImages, nIn, outputNum)
       val testingSet = testIterator.next()
       testingSet.save(testingFile)
     }
@@ -101,7 +103,7 @@ object CifarClassificationLocal {
     // train the network
     System.out.println("Creating training iterator!")
     trainingSet.shuffle()
-    val trainIterator = new SamplingDataSetIterator(trainingSet, batchSize, numberOfSamples)
+    val trainIterator = new SamplingDataSetIterator(trainingSet, batchSize, trainImages)
 
     System.out.println("Creating network!")
     val trainedNetwork = new MultiLayerNetwork(conf.SceneConfiguration.getConfiguration)
