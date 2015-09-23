@@ -19,7 +19,6 @@ import org.deeplearning4j.nn.conf.NeuralNetConfiguration
 import org.deeplearning4j.nn.conf.layers.{ConvolutionLayer, DenseLayer, OutputLayer, SubsamplingLayer}
 import org.deeplearning4j.nn.conf.layers.setup.ConvolutionLayerSetup
 import org.deeplearning4j.nn.weights.WeightInit
-import org.deeplearning4j.spark.ml.classification.NeuralNetworkClassification
 import org.nd4j.linalg.factory.Nd4j
 import org.nd4j.linalg.lossfunctions.LossFunctions
 

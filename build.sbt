@@ -5,25 +5,27 @@ version := "0.0.1"
 scalaVersion := "2.10.4"
 
 resolvers ++= Seq(
-  "snapshots" at "https://oss.sonatype.org/content/repositories/snapshots",
   "releases"  at "https://oss.sonatype.org/content/repositories/releases"
 )
+
+resolvers += Resolver.mavenLocal
 
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % "1.4.1" % "provided",
   "org.apache.spark" %% "spark-mllib" % "1.4.1" % "provided",
   "org.apache.spark" %% "spark-sql" % "1.4.1" % "provided",
   "org.apache.spark" %% "spark-hive" % "1.4.1" % "provided",
-  "org.deeplearning4j" % "dl4j-spark-ml" % "0.4-rc3.2" excludeAll(
+  "org.deeplearning4j" % "dl4j-spark-ml" % "0.4-rc3.5.-SNAPSHOT" excludeAll(
     ExclusionRule(organization = "org.apache.spark"),
     ExclusionRule(organization = "org.apache.hadoop")
   ),
-  "org.deeplearning4j" % "dl4j-spark" % "0.4-rc3.2" excludeAll(
+  "org.deeplearning4j" % "dl4j-spark" % "0.4-rc3.5.-SNAPSHOT" excludeAll(
     ExclusionRule(organization = "org.apache.spark"),
     ExclusionRule(organization = "org.apache.hadoop")
   ),
   "com.twelvemonkeys.imageio" % "imageio-core" % "3.1.1",
-  "org.nd4j" % "nd4j-x86" % "0.4-rc3.2"
+  "org.nd4j" % "nd4j-x86" % "0.4-rc4.4-SNAPSHOT",
+  "org.slf4j" % "slf4j-api" % "1.7.5"
 )
 
 assemblyJarName in assembly := "cifar.jar"
