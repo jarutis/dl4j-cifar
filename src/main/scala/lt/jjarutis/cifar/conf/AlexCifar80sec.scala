@@ -16,7 +16,7 @@ object AlexCifar80sec {
   val seed = 123
   val outputNum = 10
   val batchSize = 50
-  val iterations = 10
+  val iterations = 100
 
   val cKernel = Array(5, 5)
   val cStride = Array(1, 1)
@@ -31,11 +31,14 @@ object AlexCifar80sec {
       .batchSize(batchSize)
       .iterations(iterations)
       .constrainGradientToUnitNorm(true)
-      .optimizationAlgo(OptimizationAlgorithm.STOCHASTIC_GRADIENT_DESCENT)
+      .optimizationAlgo(OptimizationAlgorithm.LINE_GRADIENT_DESCENT)
       .learningRate(1e-4)
+      .regularization(true)
+      .l2(0.0001)
       .list(8)
       .layer(0, new ConvolutionLayer.Builder(cKernel, cStride, cPadding)
                .nOut(32)
+               .dropOut(0.3)
                .weightInit(WeightInit.XAVIER)
                .activation("relu")
                .build())
@@ -44,6 +47,7 @@ object AlexCifar80sec {
                .build())
       .layer(2, new ConvolutionLayer.Builder(cKernel, cStride, cPadding)
                .nOut(32)
+               .dropOut(0.3)
                .weightInit(WeightInit.XAVIER)
                .activation("relu")
                .build())
@@ -52,6 +56,7 @@ object AlexCifar80sec {
                .build())
       .layer(4, new ConvolutionLayer.Builder(cKernel, cStride, cPadding)
                .nOut(64)
+               .dropOut(0.2)
                .weightInit(WeightInit.XAVIER)
                .activation("relu")
                .build())
