@@ -7,15 +7,14 @@ import org.deeplearning4j.nn.conf.layers.setup.ConvolutionLayerSetup
 import org.deeplearning4j.nn.weights.WeightInit
 import org.nd4j.linalg.lossfunctions.LossFunctions
 
-
-object SceneConfiguration {
+object AdamSceneConfiguration {
   val rows = 32
   val columns = 32
   val channels = 3
   val seed = 123
   val outputNum = 10
-  val batchSize = 500
-  val iterations = 1
+  val batchSize = 100
+  val iterations = 10
 
   def getConfiguration = {
     val builder = new NeuralNetConfiguration.Builder()
@@ -50,7 +49,6 @@ object SceneConfiguration {
                .activation("softmax")
                .build())
       .backprop(true).pretrain(false)
-
     new ConvolutionLayerSetup(builder, rows, columns, channels)
 
     builder.build()

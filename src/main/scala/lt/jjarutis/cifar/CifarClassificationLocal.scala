@@ -14,9 +14,7 @@ import org.nd4j.linalg.dataset.DataSet
 import org.nd4j.linalg.dataset.api.iterator.StandardScaler
 import org.nd4j.linalg.factory.Nd4j
 
-
 object CifarClassificationLocal {
-
   val numRows = 32
   val numColumns = 32
   val nChannels = 3
@@ -106,7 +104,7 @@ object CifarClassificationLocal {
     val trainIterator = new SamplingDataSetIterator(trainingSet, batchSize, trainImages)
 
     System.out.println("Creating network!")
-    val trainedNetwork = new MultiLayerNetwork(conf.SceneConfiguration.getConfiguration)
+    val trainedNetwork = new MultiLayerNetwork(conf.AdamSceneConfiguration.getConfiguration)
     trainedNetwork.init()
     trainedNetwork.setListeners(new ScoreIterationListener(1))
 
@@ -123,7 +121,6 @@ object CifarClassificationLocal {
       evaluation.eval(testIterNext.getLabels(), trainedNetwork.output(testIterNext.getFeatureMatrix(), true))
       System.out.println(evaluation.stats())
       System.out.println("One batch done with score " + trainedNetwork.score())
-
       System.out.println(evaluation.stats())
     }
   }
