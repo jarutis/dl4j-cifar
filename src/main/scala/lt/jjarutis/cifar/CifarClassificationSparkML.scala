@@ -28,7 +28,7 @@ object CifarClassificationSparkML {
     val classification = new NeuralNetworkClassification()
       .setLabelCol("labelIndex")
       .setFeaturesCol("scaledFeatures")
-      .setConf(conf.AdamSceneConfiguration.getConfiguration)
+      .setConf(conf.AlexCifar80sec.getConfiguration)
     val pipeline = new Pipeline().setStages(Array(indexer, scaler, classification))
 
     val model = pipeline.fit(trainingData)
