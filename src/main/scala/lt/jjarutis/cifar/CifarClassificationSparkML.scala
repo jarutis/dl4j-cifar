@@ -16,7 +16,7 @@ object CifarClassificationSparkML {
     val sc = new SparkContext(sparkConf)
     val hiveCtx = new HiveContext(sc)
 
-    val cifar = hiveCtx.read.parquet("cifar/vectorized").repartition(100)
+    val cifar = hiveCtx.read.parquet("cifar/vectorized").repartition(1000)
     val Array(trainingData, testData) = cifar.randomSplit(Array(0.7, 0.3))
 
     val indexer = new StringIndexer()

@@ -15,7 +15,7 @@ object AlexCifar80sec {
   val channels = 3
   val seed = 123
   val outputNum = 10
-  val batchSize = 500
+  val batchSize = 50
   val iterations = 10
 
   val cKernel = Array(5, 5)
