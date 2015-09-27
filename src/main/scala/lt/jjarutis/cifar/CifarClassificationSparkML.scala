@@ -9,14 +9,6 @@ import org.apache.spark.sql.hive.HiveContext
 import org.deeplearning4j.spark.ml.classification.NeuralNetworkClassification
 
 object CifarClassificationSparkML {
-  val rows = 32
-  val columns = 32
-  val channels = 3
-  val seed = 123
-  val outputNum = 10
-  val batchSize = 500
-  val iterations = 1
-
   def main(args: Array[String]) {
     val sparkConf = new SparkConf()
       .setAppName("Cifar classification example")
@@ -36,7 +28,7 @@ object CifarClassificationSparkML {
     val classification = new NeuralNetworkClassification()
       .setLabelCol("labelIndex")
       .setFeaturesCol("scaledFeatures")
-      .setConf(conf.SceneConfiguration.getConfiguration)
+      .setConf(conf.AdamSceneConfiguration.getConfiguration)
     val pipeline = new Pipeline().setStages(Array(indexer, scaler, classification))
 
     val model = pipeline.fit(trainingData)

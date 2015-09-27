@@ -11,10 +11,10 @@ resolvers ++= Seq(
 resolvers += Resolver.mavenLocal
 
 libraryDependencies ++= Seq(
-  "org.apache.spark" %% "spark-core" % "1.5.2-SNAPSHOT" % "provided",
-  "org.apache.spark" %% "spark-mllib" % "1.5.2-SNAPSHOT" % "provided",
-  "org.apache.spark" %% "spark-sql" % "1.5.2-SNAPSHOT" % "provided",
-  "org.apache.spark" %% "spark-hive" % "1.5.2-SNAPSHOT" % "provided",
+  "org.apache.spark" %% "spark-core" % "1.5.0" % "provided",
+  "org.apache.spark" %% "spark-mllib" % "1.5.0" % "provided",
+  "org.apache.spark" %% "spark-sql" % "1.5.0" % "provided",
+  "org.apache.spark" %% "spark-hive" % "1.5.0" % "provided",
   "org.deeplearning4j" % "dl4j-spark-ml" % "0.4-rc3.4-SNAPSHOT" excludeAll(
     ExclusionRule(organization = "org.apache.spark"),
     ExclusionRule(organization = "org.apache.hadoop")

@@ -7,8 +7,7 @@ import org.deeplearning4j.nn.conf.layers.setup.ConvolutionLayerSetup
 import org.deeplearning4j.nn.weights.WeightInit
 import org.nd4j.linalg.lossfunctions.LossFunctions
 
-
-object SceneConfiguration {
+object CifarSergeyConfiguration {
   val rows = 32
   val columns = 32
   val channels = 3
